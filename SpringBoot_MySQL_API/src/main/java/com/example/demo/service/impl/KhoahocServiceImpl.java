@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Khoahoc;
@@ -18,6 +20,15 @@ public class KhoahocServiceImpl implements KhoahocService{
 	public Khoahoc createKhoahoc(Khoahoc kh) {
 		// TODO Auto-generated method stub
 		return repository.save(kh);
+	}
+	@Override
+	public Khoahoc findOne(long id) {
+		// TODO Auto-generated method stub
+		Optional<Khoahoc> employee = repository.findById(id);
+		if(employee.isPresent()) {
+			return employee.get();
+		}
+		return null;
 	}
 	
 }
